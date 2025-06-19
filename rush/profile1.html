@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>สมาชิกคนที่ 1</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f4f6;
+    }
+
+    nav {
+      background-color: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 0 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+    }
+
+    .nav-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #111827;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1rem;
+      color: #374151;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 2.25rem;
+      font-weight: bold;
+      color: #111827;
+      margin-bottom: 12px;
+    }
+
+    .header p {
+      font-size: 1.25rem;
+      color: #6b7280;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 24px;
+      margin-bottom: 48px;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .card-content h4 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .card-content p {
+      margin-top: 12px;
+      color: #4b5563;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .card img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    .spacer {
+      margin-top: 400px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- เมนู -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-title">PortFolio</div>
+      <div class="nav-links">
+        <a href="d.html">หน้าหลัก</a>
+        <a href="sub.html">เกี่ยวกับสาขา</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- เนื้อหาหลัก -->
+  <main>
+    <div class="header">
+      <h1>ทีมงาน</h1>
+      <p>พบกับสมาชิกในทีม</p>
+    </div>
+
+    <!-- สมาชิกคนที่ 1 -->
+    <div class="card">
+      <img src="https://scontent.fbkk28-1.fna.fbcdn.net/v/t1.15752-9/505365166_681337724741475_367967160726202462_n.jpg?stp=dst-jpg_s720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=0024fc&_nc_ohc=c5H9FV-qYSsQ7kNvwFo-sHG&_nc_oc=Adl6G2CgeZT8tbxGI4gCN40BYB1MfzYiQtafgkS5nbomuujeW8qExlrbEjwYLeavZEA&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fbkk28-1.fna&oh=03_Q7cD2gE9cDthNNknqUPTHCrZmKeLakZXu353nYD3azTq1g3I0w&oe=687B64AE" alt="ไก่ว่ะ" />
+      <div class="card-content">
+        <h3>จิรัฎฐ์ นาคเชียร</h3>
+        <h4>ชื่อเล่น: เต้</h4>
+        <h4>อายุ: 18</h4>
+        <h4>email: jirat.nakchean@gmail.com</h4>
+        <p>นักศึกษาสาขาวิทยาการคอมพิวเตอร์</p>
+        <a href="#"><span class="material-icons">facebook</span></a>
+        <a href="#"><span class="material-icons">twitter</span></a>
+        <a href="#"><span class="material-icons">linkedin</span></a>
+      </div>
+    </div>
+
+
+</body>
+</html>
