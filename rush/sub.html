@@ -1,101 +1,229 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>สาขา</title>
-    <head>
-        <!-- java scrips ที่ใช้ในการติดตั้งเครื่องมือ , 2 บรรทัดนี้คือการนำเข้าเครื่องมือ -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        .card-hover {
-            transition: all 0.3s ease; 
-        }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>สาขา</title>
+  <style>
+    /* ฟอนต์หลัก */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 0;
+      color: #374151; /* gray-700 */
+      line-height: 1.6;
+    }
+
+    /* container กำหนดความกว้างกลาง */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+    }
+
+    /* navbar */
+    nav {
+      background-color: #fff;
+      box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 4rem;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    nav h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827; /* gray-900 */
+      margin: 0;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      margin-left: 1.5rem;
+    }
+    nav ul li a {
+      color: #4b5563; /* gray-700 */
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.875rem;
+      padding: 0.5rem 0.75rem;
+      display: inline-block;
+      border-radius: 0.375rem;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+    nav ul li a:hover {
+      color: #2563eb; /* blue-600 */
+      background-color: #e0e7ff; /* blue-100 */
+    }
+
+    /* เมนูมือถือ แบบง่าย (ซ่อน-แสดง) */
+    .mobile-menu-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: none;
+    }
+    .mobile-menu-button svg {
+      width: 24px;
+      height: 24px;
+      stroke: #4b5563;
+    }
+
+    /* เมนูมือถือ */
+    .mobile-menu {
+      display: none;
+      background-color: white;
+      border-top: 1px solid #e5e7eb; /* gray-200 */
+    }
+    .mobile-menu ul {
+      list-style: none;
+      padding: 0.5rem 1rem;
+      margin: 0;
+    }
+    .mobile-menu ul li {
+      margin: 0.5rem 0;
+    }
+    .mobile-menu ul li a {
+      color: #4b5563;
+      font-weight: 500;
+      font-size: 1rem;
+      text-decoration: none;
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.2s ease;
+    }
+    .mobile-menu ul li a:hover {
+      background-color: #e0e7ff;
+      color: #2563eb;
+    }
+
+    /* แสดงเมนูมือถือเมื่อเปิด */
+    .mobile-menu.show {
+      display: block;
+    }
+
+    /* เนื้อหา header */
+    .header-section {
+      text-align: center;
+      margin: 3rem 0 2rem;
+      padding: 0 1.5rem;
+    }
+    .header-section h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+    .header-section p {
+      font-size: 1.25rem;
+      color: #6b7280; /* gray-600 */
+      margin: 0;
+    }
+
+    /* card */
+    .card {
+      background-color: white;
+      max-width: 1120px;
+      margin: 0 auto 3rem;
+      padding: 1.5rem 2rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 15px rgb(0 0 0 / 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px rgb(0 0 0 / 0.1);
+    }
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+    .card p {
+      font-size: 1.125rem;
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #d1d5db; /* gray-300 */
+      margin: 2rem 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+      .mobile-menu-button {
+        display: block;
+      }
+      .card {
+        padding: 1rem 1rem;
+        margin: 1.5rem 1rem 3rem;
+      }
+      .header-section h1 {
+        font-size: 1.75rem;
+      }
+      .header-section p {
+        font-size: 1rem;
+      }
+      .card h3 {
+        font-size: 1.125rem;
+      }
+      .card p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
-<body class="bg-gray-100">
-        <div class="animate-fade-in">
-    <!-- ส่วนของแถบรายการเมนู -->
-    <nav class="bg-white shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!--ปรับขนาด-->>
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center">
-                    <h1 class="text-xl font-bold text-gray-900">CS Department</h1>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="d.html" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">หน้าหลัก</a>
-                    <a href="#" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">เกี่ยวกับสาขา</a>
-
-                </div>
-                    <!-- ปุ่มที่จะกดพาเราไป -->
-                    <div class="md:hidden">
-                    <button class="mobile-menu-button text-gray-700 hover:text-blue-600">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- เมนู -->
-        <div class="mobile-menu hidden md:hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="d.html" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">
-                    หน้าหลัก
-                </a>
-                <a href="#" class="text-gray-700 hover:text-blue-600 block px-3 py-2 text-base font-medium">
-                    เกี่ยวกับสาขา
-                </a>
-            </div>
-        </div>
-    </nav>
-  
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <!-- Header Section -->
-        <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-900 mb-4">หลักสูตรครุศาสตร์อุตสาหกรรมบัณฑิต สาขาวิชาเทคโนโลยีคอมพิวเตอร์</h1>
-            <p class="text-xl text-gray-600">Bachelor of Science in Industrial Education Program in Computer technology</p>
-        </div>
-<div class="bg-white rounded-lg shadow-lg overflow-hidden card-hover p-6 flex items-center gap-6">
-    <div>
-        <h3 class="text-xl font-semibold text-gray-900 mb-4"> สาขาวิชาเทคโนโลยีคอมพิวเตอร์(Computer technology)</h3>
-        <p class="mt-3 text-xl text-gray-600" mb-4 >มุ่งผลิตครูคอมพิวเตอร์ที่มีสมรรถนะด้านวิชาชีพและเทคโนโลยีคอมพิวเตอร์ สามารถถ่ายทอดความรู้
-และพัฒนาทักษะผู้เรียน สร้างนวัตกรรมเพื่อการเรียนรู้ พัฒนาชุมชนและสังคมอย่างยั่งยืน
-พร้อมดำรงชีวิตอย่างมีความสุข โดยยึดมั่นในจรรยาบรรณวิชาชีพและสอดคล้องกับข้อกำหนดของหลักสูตร
-ในสถานศึกษาทั้งระดับอาชีวศึกษาและการศึกษาขั้นพื้นฐาน</p>
-
-
-<hr>
-<h3 class="mt-6 text-xl font-semibold text-gray-900 "> อาชีพที่สามารถประกอบได้หลังสำเร็จการศึกษา</h3>
-<p class="mt-3 text-xl text-gray-600" mb-4 >
-(1) ครูสาขาวิชาคอมพิวเตอร์ในหลักสูตรต่ำกว่าระดับปริญญาตรีทั้งสถานศึกษาของรัฐและเอกชน
-</p>
-<p class="text-xl text-gray-600" mb-4 >
-    (2) นักฝึกอบรมด้านคอมพิวเตอร์ในสถานประกอบการ
-</p>
-<p class="text-xl text-gray-600" mb-4 >
-    (3) นักพัฒนาซอฟต์แวร์
-</p>
-<p class="text-xl text-gray-600" mb-4 >
-    (4) ผู้ดูแลระบบคอมพิวเตอร์และเครือข่ายคอมพิวเตอร์
-    </p>
-<p class="text-xl text-gray-600" mb-4 >
-    (5) นักพัฒนาระบบสมองกลฝั่งตัวและไอโอที
-    </p>
-<hr>
-
-        <h3 class="mt-6 text-xl font-semibold text-gray-900 ">โครงสร้างของหลักสูตร</h3>
-        <p class="mt-3 text-xl text-gray-600" mb-4 >หลักสูตรปริญญาตรี 4 ปี
-รับทั้งนักศึกษาไทยและนักศึกษาต่างชาติ
-จํานวนหน่วยกิตรวมตลอดหลักสูตร 132 หน่วยกิต</p>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <h1>CS Department</h1>
+      <button class="mobile-menu-button" aria-label="Toggle menu" onclick="toggleMenu()">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+      <ul class="desktop-menu">
+        <li><a href="Project.html">หน้าหลัก</a></li>
+        <li><a href="#">เกี่ยวกับสาขา</a></li>
+      </ul>
     </div>
-        </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <ul>
+        <li><a href="Project.html">หน้าหลัก</a></li>
+        <li><a href="#">เกี่ยวกับสาขา</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="header-section">
+    <h1>หลักสูตรครุศาสตร์อุตสาหกรรมบัณฑิต สาขาวิชาเทคโนโลยีคอมพิวเตอร์</h1>
+    <p>Bachelor of Science in Industrial Education Program in Computer technology</p>
+  </header>
+
+  <section class="card">
+    <h3>สาขาวิชาเทคโนโลยีคอมพิวเตอร์ (Computer technology)</h3>
+    <p>
+      มุ่งผลิตครูคอมพิวเตอร์ที่มีสมรรถนะด้านวิชาชีพและเทคโนโลยีคอมพิวเตอร์ สามารถถ่ายทอดความรู้
+      และพัฒนาทักษะผู้เรียน สร้างนวัตกรรมเพื่อการเรียนรู้ พัฒนาชุมชนและสังคมอย่างยั่งยืน
+      พร้อมดำรงชีวิตอย่างมีความสุข โดยยึดมั่นในจรรยาบรรณวิชาชีพและสอดคล้องกับข้อกำหนดของหลักสูตร
+      ในสถานศึกษาทั้งระดับอาชีวศึกษาและการ
